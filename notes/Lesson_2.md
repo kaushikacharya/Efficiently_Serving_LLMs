@@ -57,27 +57,29 @@
 - ?? position_ids are assigned 1 for padded tokens
   - What purpose does it serves?
 - ?? Unlike the computation shown [above](#throughput-vs-latency), there's no consideration of "idle" time for latency computation.
-- [GPT2Model.forward documentation](https://huggingface.co/docs/transformers/v4.35.2/en/model_doc/gpt2#transformers.GPT2Model.forward) mentions:  
-  > If `past_key_values` is used, attention_mask needs to contain the masking strategy that was used for `past_key_values`. In other words, the attention_mask always has to have the length: len(`past_key_values`) + len(`input_ids`)
-  - This describes the reason for using `torch.cat` to update `attention_mask` in `next_inputs`.
-- [GPT2Model.forward documentation: transformers v4.35.2](https://huggingface.co/docs/transformers/v4.35.2/en/model_doc/gpt2#transformers.GPT2Model.forward.position_ids) mentions  
-  `position_ids` of shape `(batch_size, sequence_length)`.
-  - ?? But in the notebook, we are passing with shape `(batch_size, 1)`.
+- `attention_mask` shape:
+  - [GPT2Model.forward documentation](https://huggingface.co/docs/transformers/v4.35.2/en/model_doc/gpt2#transformers.GPT2Model.forward) mentions:  
+    > If `past_key_values` is used, attention_mask needs to contain the masking strategy that was used for `past_key_values`. In other words, the attention_mask always has to have the length: len(`past_key_values`) + len(`input_ids`)
+    - This describes the reason for using `torch.cat` to update `attention_mask` in `next_inputs`.
+- `position_ids` shape:
+  - [GPT2Model.forward documentation: transformers v4.35.2](https://huggingface.co/docs/transformers/v4.35.2/en/model_doc/gpt2#transformers.GPT2Model.forward.position_ids) mentions  
+    `position_ids` of shape `(batch_size, sequence_length)`.
+    - ?? But in the notebook, we are passing with shape `(batch_size, 1)`.
   - **Update**:  
-    - [April 23, 2025 issue](https://github.com/huggingface/transformers/issues/37702) points out:
+    - [April 23, 2025 github issue](https://github.com/huggingface/transformers/issues/37702) points out:
       > `input_ids` and `position_ids` should have the same shape
     - Basis that [pull request #37729](https://github.com/huggingface/transformers/pull/37729) changes the following in the documentation
-      > `position_ids` shape: (batch_size, input_ids_length)
+      > `position_ids` shape: (`batch_size`, `input_ids_length`)
+      - This change is reflected in the [current version documentation](https://huggingface.co/docs/transformers/main/en/model_doc/gpt2#transformers.GPT2Model.forward.position_ids)
 
-      > `input_ids_length` = `sequence_length` if `past_key_values` is None else `past_key_values[0][0].shape[-2]` (sequence_length of input past key value states)
-
-    - The change is reflected in the [current version documentation](https://huggingface.co/docs/transformers/main/en/model_doc/gpt2#transformers.GPT2Model.forward.position_ids)
-  - ?? Doubt post the above change:
-    - Documentation mentions
+  - Documentation also mentions
       > If `past_key_values` is used, only input_ids that do not have their past calculated should be passed as `input_ids`.
       >
       > The `input_ids` which have their past given to this model should not be passed as `input_ids` as they have already been computed.
 
     - Following these instructions, in the Jupyter Notebook, `input_ids` passed for the next tokens of the batch as `past_key_values` is used.
-      > `input_ids_length` = `sequence_length` if `past_key_values` is None else `past_key_values[0][0].shape[-2]` (`sequence_length` of input past key value states)
-    - ?? I think `else` part of `input_ids_length` i.e. `past_key_values[0][0].shape[-2]` is incorrect. In the notebook, this values comes out as `sequence_length`.
+
+  - IMHO the definition of `input_ids_length` is incorrect when `past_key_values` is present:
+  
+    > `input_ids_length` = `sequence_length` if `past_key_values` is None else `past_key_values[0][0].shape[-2]` (sequence_length of input past key value states)
+    - This is being discussed in the [above github issue thread](https://github.com/huggingface/transformers/issues/37702).
