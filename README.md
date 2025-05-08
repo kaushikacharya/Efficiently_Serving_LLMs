@@ -20,6 +20,7 @@ This repository contains
 |0|[Introduction](./notes/Lesson_0.md)|<ul><li>Existing inefficiencies in serving open-source self-hosted LLMs</li><li>Techniques implemented at Predibase to efficiently serve LLM request</li><li>Parameters for evaluating efficiency of LLM serving requests</li></ul>|
 |1|[Text Generation](./notes/Lesson_1.md)|<ul><li>Text generation using auto-regressive models</li><li>KV caching</li></ul>|
 |2|[Batching](./notes/Lesson_2.md)|<ul><li>Handling multiple requests</li><li>Throughput vs Latency</li></ul>|
+|3|[Continuous Batching](./notes/Lesson_3.md)|<ul><li>Continuous Batching benefits over Synchronous Batching</li><li>Implementation explained with merge and filter of batches along with visualization</li></ul>|
 
 ## Assignments
 
@@ -27,6 +28,7 @@ This repository contains
 |-------|---------------------------|-----------------|
 |#1|[Text Generation](./notes/Lesson_1.md#notebook)|<ul><li>Improving time taken to generate subsequent tokens using KV caching</li></ul>|
 |#2|[Batching](./notes/Lesson_2.md#notebook)|<ul><li>Throughput vs Latency trade-off experiment with different batch sizes</li></ul>|
+|#3|[Continuous Batching](./notes/Lesson_3.md#notebook)|<ul><li>Comparison with Synchronous Batching</li><li>Helper functions from previous lessons written in [helpers.py](./code/helpers.py)</li></ul>|
 
 ## Python Environment
 
