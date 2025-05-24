@@ -23,6 +23,7 @@ This repository contains
 |3|[Continuous Batching](./notes/Lesson_3.md)|<ul><li>Continuous Batching benefits over Synchronous Batching</li><li>Implementation explained with merge and filter of batches along with visualization</li></ul>|
 |4|[Quantization](./notes/Lesson_4.md)|<ul><li>Floating point representations explained</li><li>Zero-point quantization</li></ul>|
 |5|[Low-Rank Adaptation](./notes/Lesson_5.md)|<ul><li>LoRA explained</li><li>Benefits of LoRA over normal fine-tuning</li></ul>|
+|6|[Multi-LoRA Inference](./notes/Lesson_6.md)|<ul><li>End-to-end system with many fine-tuned models (Multiple LoRA adapters) with same base model</li><li>Vector based implementation of multiple LoRA adapters vs loop based implementation</li></ul>|
 
 ## Assignments
 
@@ -33,6 +34,7 @@ This repository contains
 |#3|[Continuous Batching](./notes/Lesson_3.md#notebook)|<ul><li>Comparison with Synchronous Batching</li><li>Helper functions from previous lessons written in [helpers.py](./code/helpers.py)</li></ul>|
 |#4|[Quantization](./notes/Lesson_4.md#notebook)|<ul><li>Continuous batching using zero-point quantization</li><li>Helper functions of [helpers.py](./code/helpers.py) improved in [utils.py](./code/utils.py)</li><li>Added function to generate responses using continuous batching in [utils.py](./code/utils.py)</li></ul>|
 |#5|[Low-Rank Adaptation](./notes/Lesson_5.md#notebook)|<ul><li>LoRA implemented on a toy model by replacing linear layer with LoRA layer</li></ul>|
+|#6|[Multi-LoRA](./notes/Lesson_6.md#notebook)|<ul><li>Improved [previous lesson's implementation](./notes/Lesson_5.md#notebook) with multiple LoRAs</li><li>Comparison of average latency between vectorized and loop based implementations</li></ul>|
 
 ## Python Environment
 
