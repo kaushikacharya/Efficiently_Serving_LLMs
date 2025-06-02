@@ -24,6 +24,7 @@ This repository contains
 |4|[Quantization](./notes/Lesson_4.md)|<ul><li>Floating point representations explained</li><li>Zero-point quantization</li></ul>|
 |5|[Low-Rank Adaptation](./notes/Lesson_5.md)|<ul><li>LoRA explained</li><li>Benefits of LoRA over normal fine-tuning</li></ul>|
 |6|[Multi-LoRA Inference](./notes/Lesson_6.md)|<ul><li>End-to-end system with many fine-tuned models (Multiple LoRA adapters) with same base model</li><li>Vector based implementation of multiple LoRA adapters vs loop based implementation</li></ul>|
+|7|[LoRAX](./notes/Lesson_7.md)|<ul><li>Display working of previous lessons in LoRAX</li></ul>|
 
 ## Assignments
 
@@ -35,6 +36,7 @@ This repository contains
 |#4|[Quantization](./notes/Lesson_4.md#notebook)|<ul><li>Continuous batching using zero-point quantization</li><li>Helper functions of [helpers.py](./code/helpers.py) improved in [utils.py](./code/utils.py)</li><li>Added function to generate responses using continuous batching in [utils.py](./code/utils.py)</li></ul>|
 |#5|[Low-Rank Adaptation](./notes/Lesson_5.md#notebook)|<ul><li>LoRA implemented on a toy model by replacing linear layer with LoRA layer</li></ul>|
 |#6|[Multi-LoRA](./notes/Lesson_6.md#notebook)|<ul><li>Improved [previous lesson's implementation](./notes/Lesson_5.md#notebook) with multiple LoRAs</li><li>Comparison of average latency between vectorized and loop based implementations</li></ul>|
+|#7|[LoRAX](./notes/Lesson_7.md#notebook)|<ul><li>Working of previous lessons on LoRAX serverless shared endpoint</li><li>Deployment name: mistral-7b, **Model**: mistralai/Mistral-7B-v0.1</li><li>Shown improvement in NER task on usage of adapter along with base model</li></ul>|
 
 ## Python Environment
 
