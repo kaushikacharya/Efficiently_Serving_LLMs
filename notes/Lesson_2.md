@@ -21,6 +21,9 @@
   - Definitions:
     - **Latency**: The overall time it takes for the model to generate the full response for a user.
     - **Throughput**: The number of output tokens per second an inference server can generate across all users and requests.
+      - In [Lesson 7 notebook](./Lesson_7.md#notebook) (cell using `client.generate_stream`):
+        - Throughput is computed as the number of tokens generated per second for subsequent tokens (i.e. 2nd token onwards).
+        - First generated token's latency is termed as Time to First Token (TTFT)
   - Source: [Databricks article: LLM Inference Performance Engineering: Best Practices](https://www.databricks.com/blog/llm-inference-performance-engineering-best-practices)
 
 - Optimized for latency
