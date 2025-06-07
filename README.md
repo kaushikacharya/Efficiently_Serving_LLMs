@@ -42,3 +42,12 @@ This repository contains
 
 - Python: 3.11
 - pip install libraries listed in [requirements.txt](./code/requirements.txt)
+
+## Certificate
+
+- [Course Completion Certificate](https://kaushikacharya.github.io/assets/certificates/DeepLearning_ai_Efficiently_Serving_LLMs.pdf)
+- Issued on May 2025
+
+## Related Courses
+
+Visit my [Github page](https://kaushikacharya.github.io/courses/#machine-learning--deep-learning) for other Generative AI courses.
